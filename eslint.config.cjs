@@ -3,18 +3,18 @@ const tsPlugin = require('@typescript-eslint/eslint-plugin');
 module.exports = [
   {
     files: ['**/*.ts', '**/*.js'],
+    env: {
+      browser: true,
+      es2022: true,
+      node: true,
+    },
     languageOptions: {
       parser: require('@typescript-eslint/parser'),
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
         project: './tsconfig.eslint.json',
-      },
-      env: {
-        browser: true,
-        es2022: true,
-        node: true,
-      },
+      }
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
