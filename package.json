@@ -12,6 +12,7 @@
     "dev": "tsx src/index.ts",
     "build": "tsc",
     "test": "vitest",
+    "test:run": "vitest run",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .ts",
     "typecheck": "tsc --noEmit"
