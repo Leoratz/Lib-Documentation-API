@@ -1,1 +1,1 @@
-console.log("Hello rest-to-openapi");
+console.log('Hello rest-to-openapi')
