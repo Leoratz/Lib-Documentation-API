@@ -13,6 +13,7 @@
     "build": "tsc",
     "test": "vitest",
     "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .ts",
     "typecheck": "tsc --noEmit"
