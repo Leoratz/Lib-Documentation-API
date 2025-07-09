@@ -1,5 +1,5 @@
 {
-  "name": "rest-to-openapi",
+  "name": "@leoratz/lib-documentation-api",
   "version": "1.0.0",
   "description": "Analyze an Express or Fastify API and generate an OpenAPI spec automatically.",
   "type": "module",
@@ -13,7 +13,8 @@
     "build": "tsc",
     "test": "vitest",
     "format:check": "prettier --check .",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
