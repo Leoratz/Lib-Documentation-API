@@ -1,11 +1,9 @@
 import { routeRegistry } from './registry'
 import { oas30 } from 'openapi3-ts'
+import { zodToJsonSchema } from 'zod-to-json-schema' 
+import { zodToParameters } from './zodToParameters'
 
-import { zodToJsonSchema } from 'zod-to-json-schema' // selon ta lib utilisée
-
-
-
-export function getOpenApiSpec(): oas30.OpenAPIObject {
+export function generateSpec(): oas30.OpenAPIObject {
   const paths: oas30.PathsObject = {}
 
   for (const route of routeRegistry) {
@@ -13,7 +11,24 @@ export function getOpenApiSpec(): oas30.OpenAPIObject {
 
     const parameters: oas30.ParameterObject[] = []
 
-    // Ici tu peux ajouter la conversion des schémas request/response via zodToJsonSchema
+    if (request?.params !== undefined) {
+      parameters.push(...zodToParameters(request.params, 'path'))
+    }
+
+    if (request?.query !== undefined) {
+      parameters.push(...zodToParameters(request.query, 'query'))
+    }
+
+    const requestBody: oas30.RequestBodyObject | undefined =
+    request?.body !== undefined
+    ? {
+        content: {
+          'application/json': {
+            schema: zodToJsonSchema(request.body) as oas30.SchemaObject,
+          },
+        },
+      }
+    : undefined
 
     const responses: Record<string, oas30.ResponseObject> = {}
 
@@ -35,6 +50,7 @@ export function getOpenApiSpec(): oas30.OpenAPIObject {
     paths[path][method] = {
       summary,
       responses,
+        requestBody,
       parameters,
     }
   }
@@ -48,3 +64,5 @@ export function getOpenApiSpec(): oas30.OpenAPIObject {
     paths,
   }
 }
+
+
