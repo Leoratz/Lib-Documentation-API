@@ -7,14 +7,20 @@ module.exports = [
 
     ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'coverage/**'],
 
-    env: {
-      browser: true,
-      es2022: true,
-      node: true,
-    },
-
     languageOptions: {
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        navigator: 'readonly',
+
+        process: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+      },
+
       parser: tsParser,
+
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
