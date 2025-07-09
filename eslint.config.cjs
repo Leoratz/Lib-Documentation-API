@@ -1,24 +1,31 @@
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const tsParser = require('@typescript-eslint/parser');
 
 module.exports = [
   {
-    files: ['**/*.ts', '**/*.js'],
+    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+
+    ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'coverage/**'],
+
     env: {
       browser: true,
       es2022: true,
       node: true,
     },
+
     languageOptions: {
-      parser: require('@typescript-eslint/parser'),
+      parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
         project: './tsconfig.eslint.json',
-      }
+      },
     },
+
     plugins: {
       '@typescript-eslint': tsPlugin,
     },
+
     rules: {
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'prefer-const': 'error',
@@ -37,13 +44,5 @@ module.exports = [
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/strict-boolean-expressions': 'error',
     },
-    ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'coverage/**'],
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    plugins: {
-      '@typescript-eslint': tsPlugin,
-    },
-    rules: {},
   },
 ];
