@@ -1,26 +1,19 @@
 {
   "name": "@leoratz/lib-documentation-api",
   "version": "1.0.0",
-  "description": "Analyze an Express or Fastify API and generate an OpenAPI spec automatically.",
+  "description": "Analyse an Express or Fastify API and generate an OpenAPI spec automatically.",
   "type": "module",
-  "main": "index.js",
-  "files": [
-    "README.md",
-    "LICENSE"
-  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
-    "typecheck": "tsc --noEmit"
+    "format:check": "prettier --check .",
+    "test": "vitest run"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/node": "^24.0.12",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
