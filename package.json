@@ -1,8 +1,13 @@
 {
   "name": "rest-to-openapi",
   "version": "1.0.0",
-  "description": "",
+  "description": "Analyze an Express or Fastify API and generate an OpenAPI spec automatically.",
+  "type": "module",
   "main": "index.js",
+  "files": [
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
