@@ -1,4 +1,4 @@
-import { generateSpec } from './generateSpec'
+import { generateSpec } from './generateSpec.js'
 import fs from 'fs'
 
 export function generateOpenAPIFile(filePath = 'openapi.json'): void {

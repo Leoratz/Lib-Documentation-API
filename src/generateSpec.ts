@@ -1,7 +1,7 @@
-import { routeRegistry } from './registry'
+import { routeRegistry } from './registry.js'
 import { oas30 } from 'openapi3-ts'
 import { zodToJsonSchema } from 'zod-to-json-schema' 
-import { zodToParameters } from './zodToParameters'
+import { zodToParameters } from './zodToParameters.js'
 
 export function generateSpec(): oas30.OpenAPIObject {
   const paths: oas30.PathsObject = {}

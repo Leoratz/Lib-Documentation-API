@@ -11,6 +11,7 @@
     "*.config.ts",
     ".eslintrc.cjs",
     "examples/*",
+    "bin/*"
   ],
   "exclude": ["node_modules", "dist"]
 }
