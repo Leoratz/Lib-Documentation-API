@@ -1,6 +1,5 @@
-import { defineRoute, generateSpec } from '../src'
+import { defineRoute, generateOpenAPIFile } from '../src'
 import { z } from 'zod'
-import fs from 'fs'
 
 defineRoute({
   method: 'get',
@@ -10,8 +9,7 @@ defineRoute({
   response: { 200: z.object({ id: z.string(), name: z.string() }) },
 })
 
-const spec = generateSpec()
-fs.writeFileSync('openapi.json', JSON.stringify(spec, null, 2))
+generateOpenAPIFile()
 
 // eslint-disable-next-line no-console
 console.log('OpenAPI spec generated in openapi.json')

@@ -6,7 +6,6 @@ import { z } from 'zod'
 
 describe('OpenAPI spec generation', () => {
   beforeEach(() => {
-    // Nettoyer le registre avant chaque test
     routeRegistry.length = 0
   })
 
@@ -29,8 +28,6 @@ describe('OpenAPI spec generation', () => {
     expect(spec.paths['/test/:id']).toBeDefined()
     expect(spec.paths['/test/:id'].get).toBeDefined()
     expect(spec.paths['/test/:id']?.get?.summary).toBe('Test route')
-
-    // expect(spec.paths['/test/:id'].get.summary).toBe('Test route')
 
   })
 })

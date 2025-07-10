@@ -2,4 +2,4 @@ export * from './defineRoute'
 export * from './types'
 export * from './zodToParameters'
 export * from './generateSpec'
-
+export * from './generateOpenAPIFile'
