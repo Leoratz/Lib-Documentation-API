@@ -9,7 +9,8 @@
     "**/*.spec.ts",
     "*.config.js",
     "*.config.ts",
-    ".eslintrc.cjs"
+    ".eslintrc.cjs",
+    "examples/*",
   ],
   "exclude": ["node_modules", "dist"]
 }

@@ -2,7 +2,6 @@ import { ZodType, ZodObject } from 'zod'
 import { oas30 } from 'openapi3-ts'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 
-
 function zodToParameters(
   schema: ZodType,
   location: 'path' | 'query'
@@ -12,7 +11,7 @@ function zodToParameters(
   }
 
   const jsonSchema = zodToJsonSchema(schema) as {
-    properties?: Record<string, any>
+    properties?: Record<string, oas30.SchemaObject>
     required?: string[]
   }
 
