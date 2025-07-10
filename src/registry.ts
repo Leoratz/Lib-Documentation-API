@@ -1,4 +1,4 @@
-import { RouteDefinition } from './types'
+import { RouteDefinition } from './types.js'
 
 export const routeRegistry: RouteDefinition[] = []
 
