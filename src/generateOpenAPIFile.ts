@@ -19,7 +19,7 @@ export function generateOpenAPIFile(filePath = 'openapi.json'): void {
       // eslint-disable-next-line no-console
       console.log(`✅ OpenAPI YAML file generated at ${filePath}`)
     } else {
-      fs.writeFileSync(filePath, JSON.stringify(spec, null, 2), 'utf-8')
+      fs.writeFileSync(filePath, JSON.stringify(spec, null, 2) + '\n', 'utf-8')
       // eslint-disable-next-line no-console
       console.log(`✅ OpenAPI JSON file generated at ${filePath}`)
     }
