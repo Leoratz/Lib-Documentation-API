@@ -28,6 +28,5 @@ describe('OpenAPI spec generation', () => {
     expect(spec.paths['/test/:id']).toBeDefined()
     expect(spec.paths['/test/:id'].get).toBeDefined()
     expect(spec.paths['/test/:id']?.get?.summary).toBe('Test route')
-
   })
 })

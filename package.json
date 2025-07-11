@@ -32,7 +32,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
     "format:check": "prettier --check .",
-    "test": "vitest run", 
+    "test": "vitest run",
     "example": "tsx examples/example.ts"
   },
   "devDependencies": {

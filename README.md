@@ -6,9 +6,10 @@
 A TypeScript library that automatically analyzes Express or Fastify APIs and generates OpenAPI 3.0 specifications. Define your routes with Zod schemas and get comprehensive API documentation with zero boilerplate.
 
 ## Contributors
-* [Léora CHRIQUI](https://github.com/Leoratz)
-* [Aurore DIMECH](https://github.com/Aurore-Dimech)
-* [Brunic FEYOU](https://github.com/BrunicFeyou)
+
+- [Léora CHRIQUI](https://github.com/Leoratz)
+- [Aurore DIMECH](https://github.com/Aurore-Dimech)
+- [Brunic FEYOU](https://github.com/BrunicFeyou)
 
 ## Features
 
@@ -41,21 +42,21 @@ defineRoute({
   summary: 'Get user by ID',
   request: {
     params: z.object({
-      id: z.string().uuid('Invalid user ID format')
-    })
+      id: z.string().uuid('Invalid user ID format'),
+    }),
   },
   response: {
     200: z.object({
       id: z.string().uuid(),
       name: z.string(),
       email: z.string().email(),
-      createdAt: z.string().datetime()
+      createdAt: z.string().datetime(),
     }),
     404: z.object({
       error: z.string(),
-      message: z.string()
-    })
-  }
+      message: z.string(),
+    }),
+  },
 })
 
 // Define a POST route with body validation
@@ -67,20 +68,20 @@ defineRoute({
     body: z.object({
       name: z.string().min(1),
       email: z.string().email(),
-      age: z.number().min(18).optional()
-    })
+      age: z.number().min(18).optional(),
+    }),
   },
   response: {
     201: z.object({
       id: z.string().uuid(),
       name: z.string(),
-      email: z.string().email()
+      email: z.string().email(),
     }),
     400: z.object({
       error: z.string(),
-      details: z.array(z.string())
-    })
-  }
+      details: z.array(z.string()),
+    }),
+  },
 })
 ```
 
@@ -102,8 +103,8 @@ Registers a route definition for OpenAPI generation.
 
 #### Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter    | Type              | Description                    |
+| ------------ | ----------------- | ------------------------------ |
 | `definition` | `RouteDefinition` | The route configuration object |
 
 #### RouteDefinition Interface
@@ -114,9 +115,9 @@ interface RouteDefinition {
   path: string
   summary?: string
   request?: {
-    params?: ZodSchema    // Path parameters
-    query?: ZodSchema     // Query parameters  
-    body?: ZodSchema      // Request body
+    params?: ZodSchema // Path parameters
+    query?: ZodSchema // Query parameters
+    body?: ZodSchema // Request body
   }
   response: Record<number, ZodSchema> // HTTP status code -> response schema
 }
@@ -134,8 +135,8 @@ Generates and saves the OpenAPI specification to a JSON file.
 
 #### Parameters
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
+| Parameter  | Type     | Default          | Description      |
+| ---------- | -------- | ---------------- | ---------------- |
 | `filePath` | `string` | `'openapi.json'` | Output file path |
 
 ## Advanced Usage
@@ -156,25 +157,27 @@ defineRoute({
       page: z.coerce.number().min(1).default(1),
       limit: z.coerce.number().min(1).max(100).default(10),
       search: z.string().optional(),
-      role: z.enum(['admin', 'user', 'moderator']).optional()
-    })
+      role: z.enum(['admin', 'user', 'moderator']).optional(),
+    }),
   },
   response: {
     200: z.object({
-      users: z.array(z.object({
-        id: z.string().uuid(),
-        name: z.string(),
-        email: z.string().email(),
-        role: z.enum(['admin', 'user', 'moderator'])
-      })),
+      users: z.array(
+        z.object({
+          id: z.string().uuid(),
+          name: z.string(),
+          email: z.string().email(),
+          role: z.enum(['admin', 'user', 'moderator']),
+        })
+      ),
       pagination: z.object({
         page: z.number(),
         limit: z.number(),
         total: z.number(),
-        totalPages: z.number()
-      })
-    })
-  }
+        totalPages: z.number(),
+      }),
+    }),
+  },
 })
 
 // Route with file upload
@@ -184,23 +187,23 @@ defineRoute({
   summary: 'Upload user avatar',
   request: {
     params: z.object({
-      id: z.string().uuid()
+      id: z.string().uuid(),
     }),
     body: z.object({
       avatar: z.string().describe('Base64 encoded image data'),
-      filename: z.string()
-    })
+      filename: z.string(),
+    }),
   },
   response: {
     200: z.object({
       avatarUrl: z.string().url(),
-      message: z.string()
+      message: z.string(),
     }),
     413: z.object({
       error: z.literal('File too large'),
-      maxSize: z.string()
-    })
-  }
+      maxSize: z.string(),
+    }),
+  },
 })
 ```
 
@@ -222,11 +225,11 @@ const getUserRoute = defineRoute({
   path: '/users/:id',
   summary: 'Get user by ID',
   request: {
-    params: z.object({ id: z.string() })
+    params: z.object({ id: z.string() }),
   },
   response: {
-    200: z.object({ id: z.string(), name: z.string() })
-  }
+    200: z.object({ id: z.string(), name: z.string() }),
+  },
 })
 
 // Implement the actual route
@@ -269,10 +272,12 @@ Add to your `package.json`:
 ## Requirements
 
 ### Runtime Dependencies
+
 - Node.js >= 16
 - Zod >= 3.0
 
 ### Development Dependencies (for contributors)
+
 - TypeScript >= 5.8
 - Vitest >= 3.2 (for testing)
 - ESLint >= 9.30 (for linting)
@@ -293,14 +298,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### Scripts
 
-| Script | Description |
-|--------|-------------|
-| `npm run dev` | Run development server |
-| `npm run build` | Build the library |
-| `npm run test` | Run tests |
-| `npm run lint` | Lint code |
-| `npm run typecheck` | Type checking |
-| `npm run example` | Run example usage |
+| Script              | Description            |
+| ------------------- | ---------------------- |
+| `npm run dev`       | Run development server |
+| `npm run build`     | Build the library      |
+| `npm run test`      | Run tests              |
+| `npm run lint`      | Lint code              |
+| `npm run typecheck` | Type checking          |
+| `npm run example`   | Run example usage      |
 
 ## License
 
