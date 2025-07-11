@@ -1,6 +1,6 @@
 # Librairie - Documentation API
 
-[![npm version](https://badge.fury.io/js/rest-to-openapi.svg)](https://www.npmjs.com/package/@leorachr/lib-documentation-api)
+[![npm version](https://badge.fury.io/js/%40leorachr%2Flib-documentation-api.svg)](https://badge.fury.io/js/%40leorachr%2Flib-documentation-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A TypeScript library that automatically analyzes Express or Fastify APIs and generates OpenAPI 3.0 specifications. Define your routes with Zod schemas and get comprehensive API documentation with zero boilerplate.
@@ -24,7 +24,7 @@ A TypeScript library that automatically analyzes Express or Fastify APIs and gen
 ## Installation
 
 ```bash
-npm i rest-to-openapi
+npm i @leorachr/lib-documentation-api
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ npm i rest-to-openapi
 ### 1. Define your routes
 
 ```typescript
-import { defineRoute } from 'rest-to-openapi'
+import { defineRoute } from '@leorachr/lib-documentation-api'
 import { z } from 'zod'
 
 // Define a route with request/response schemas
@@ -144,7 +144,7 @@ Generates and saves the OpenAPI specification to a JSON file.
 ### Complex Route Examples
 
 ```typescript
-import { defineRoute } from 'rest-to-openapi'
+import { defineRoute } from '@leorachr/lib-documentation-api'
 import { z } from 'zod'
 
 // Route with query parameters
