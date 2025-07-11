@@ -13,6 +13,5 @@
     "examples/*",
     "bin/*"
   ],
-  "exclude": ["node_modules", "dist"],
-  "excludedFiles": ["bin/generate-openapi.js"]
+  "exclude": ["node_modules", "dist"]
 }
