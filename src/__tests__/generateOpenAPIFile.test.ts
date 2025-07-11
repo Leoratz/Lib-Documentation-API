@@ -44,4 +44,30 @@ describe('OpenAPI file generation', () => {
 
     fs.unlinkSync(defaultFile)
   })
+
+  it('writes an OpenAPI file with empty paths if no routes are registered', () => {
+    generateOpenAPIFile(TEST_FILE)
+    const content = fs.readFileSync(TEST_FILE, 'utf-8')
+    const json = JSON.parse(content)
+    expect(json.paths).toEqual({})
+  })
+
+  it('overwrites an existing file', () => {
+    fs.writeFileSync(TEST_FILE, 'old content')
+    defineRoute({
+      method: 'get',
+      path: '/overwrite',
+      summary: 'Overwrite test',
+      response: { 200: z.object({ ok: z.boolean() }) },
+    })
+    generateOpenAPIFile(TEST_FILE)
+    const content = fs.readFileSync(TEST_FILE, 'utf-8')
+    expect(content).not.toContain('old content')
+    const json = JSON.parse(content)
+    expect(json.paths['/overwrite']).toBeDefined()
+  })
+
+  it('throws or logs an error if the file path is invalid', () => {
+    expect(() => generateOpenAPIFile('/invalid/path/openapi.json')).toThrow()
+  })
 })

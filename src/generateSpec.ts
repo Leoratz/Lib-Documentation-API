@@ -7,51 +7,56 @@ export function generateSpec(): oas30.OpenAPIObject {
   const paths: oas30.PathsObject = {}
 
   for (const route of routeRegistry) {
-    const { method, path, summary, request, response } = route
+    try {
+      const { method, path, summary, request, response } = route
 
-    const parameters: oas30.ParameterObject[] = []
+      const parameters: oas30.ParameterObject[] = []
 
-    if (request?.params !== undefined) {
-      parameters.push(...zodToParameters(request.params, 'path'))
-    }
-
-    if (request?.query !== undefined) {
-      parameters.push(...zodToParameters(request.query, 'query'))
-    }
-
-    const requestBody: oas30.RequestBodyObject | undefined =
-      request?.body !== undefined
-        ? {
-            content: {
-              'application/json': {
-                schema: zodToJsonSchema(request.body) as oas30.SchemaObject,
-              },
-            },
-          }
-        : undefined
-
-    const responses: Record<string, oas30.ResponseObject> = {}
-
-    for (const [status, schema] of Object.entries(response)) {
-      responses[status] = {
-        description: '',
-        content: {
-          'application/json': {
-            schema: zodToJsonSchema(schema) as unknown as oas30.SchemaObject,
-          },
-        },
+      if (request?.params !== undefined) {
+        parameters.push(...zodToParameters(request.params, 'path'))
       }
-    }
 
-    if (paths[path] === undefined) {
-      paths[path] = {}
-    }
+      if (request?.query !== undefined) {
+        parameters.push(...zodToParameters(request.query, 'query'))
+      }
 
-    paths[path][method] = {
-      summary,
-      responses,
-      requestBody,
-      parameters,
+      const requestBody: oas30.RequestBodyObject | undefined =
+        request?.body !== undefined
+          ? {
+              content: {
+                'application/json': {
+                  schema: zodToJsonSchema(request.body) as oas30.SchemaObject,
+                },
+              },
+            }
+          : undefined
+
+      const responses: Record<string, oas30.ResponseObject> = {}
+
+      for (const [status, schema] of Object.entries(response)) {
+        responses[status] = {
+          description: '',
+          content: {
+            'application/json': {
+              schema: zodToJsonSchema(schema) as unknown as oas30.SchemaObject,
+            },
+          },
+        }
+      }
+
+      if (paths[path] === undefined) {
+        paths[path] = {}
+      }
+
+      paths[path][method] = {
+        summary,
+        responses,
+        requestBody,
+        parameters,
+      }
+    } catch (err) {
+      console.error(`Failed to process route: ${JSON.stringify(route)}\nError:`, err)
+      throw err
     }
   }
 
