@@ -7,18 +7,18 @@ A TypeScript library that automatically analyzes Express or Fastify APIs and gen
 
 ## Features
 
-- 🚀 **Zero-config setup** - Works out of the box
-- 🔍 **Type-safe** - Full TypeScript support with strict typing
-- 📋 **Zod integration** - Use Zod schemas for validation and documentation
-- 🎯 **OpenAPI 3.0** - Generate standard-compliant specifications
-- 📁 **Multiple formats** - Export to JSON or integrate programmatically
-- 🛠️ **CLI tool** - Generate specs from command line
-- ⚡ **Framework agnostic** - Works with Express, Fastify, and more
+- **Zero-config setup** - Works out of the box
+- **Type-safe** - Full TypeScript support with strict typing
+- **Zod integration** - Use Zod schemas for validation and documentation
+- **OpenAPI 3.0** - Generate standard-compliant specifications
+- **Multiple formats** - Export to JSON or integrate programmatically
+- **CLI tool** - Generate specs from command line
+- **Framework agnostic** - Works with Express, Fastify, and more
 
 ## Installation
 
 ```bash
-npm install @leoratz/lib-documentation-api
+npm i rest-to-openapi
 ```
 
 ## Quick Start
@@ -79,16 +79,7 @@ defineRoute({
 })
 ```
 
-### 2. Generate OpenAPI specification
-
-```typescript
-import { generateOpenAPIFile } from '@leoratz/lib-documentation-api'
-
-// Generate and save to file
-generateOpenAPIFile('api-docs.json')
-```
-
-### 3. Use the CLI tool
+### 2. Use the CLI tool
 
 ```bash
 # Generate OpenAPI spec to default file (openapi.json)
@@ -208,7 +199,7 @@ defineRoute({
 })
 ```
 
-### Programmatic Usage
+<!-- ### Programmatic Usage
 
 ```typescript
 import { generateSpec } from '@leoratz/lib-documentation-api'
@@ -240,11 +231,10 @@ spec.servers = [
 ]
 
 // Save the customized spec
-import { writeFileSync } from 'fs'
-writeFileSync('custom-openapi.json', JSON.stringify(spec, null, 2))
-```
 
-## 🔧 Integration Examples
+``` -->
+
+## Integration Examples
 
 ### Express.js Integration
 
@@ -275,40 +265,13 @@ app.get('/users/:id', (req, res) => {
   res.json({ id: req.params.id, name: 'John Doe' })
 })
 
-// Generate documentation
-generateOpenAPIFile('api-docs.json')
-
 app.listen(3000, () => {
   console.log('Server running on port 3000')
   console.log('API documentation generated!')
 })
 ```
 
-### Build Process Integration
-
-Add to your `package.json`:
-
-```json
-{
-  "scripts": {
-    "build": "tsc && npm run generate-docs",
-    "generate-docs": "node -r ts-node/register generate-docs.ts",
-    "dev": "concurrently \"tsc -w\" \"npm run generate-docs\""
-  }
-}
-```
-
-Create `generate-docs.ts`:
-
-```typescript
-import './src/routes' // Import all your route definitions
-import { generateOpenAPIFile } from '@leoratz/lib-documentation-api'
-
-generateOpenAPIFile('public/api-docs.json')
-console.log('✅ API documentation generated!')
-```
-
-## 🛠️ CLI Usage
+## CLI Usage
 
 The package includes a CLI tool for generating OpenAPI specifications:
 
@@ -320,7 +283,7 @@ npx generate-openapi
 npx generate-openapi docs/api-spec.json
 
 # Use in npm scripts
-npm run generate-docs
+npm run generate-openapi
 ```
 
 Add to your `package.json`:
@@ -333,13 +296,13 @@ Add to your `package.json`:
 }
 ```
 
-## 📋 Requirements
+## Requirements
 
 - Node.js >= 16
 - TypeScript >= 4.5 (for development)
 - Zod >= 3.0
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
@@ -372,8 +335,3 @@ MIT © [Leoratz](https://github.com/leoratz)
 - [GitHub Repository](https://github.com/leoratz/lib-documentation-api)
 - [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3/)
 - [Zod Documentation](https://zod.dev/)
-
----
-
-**Made with ❤️ for the developer community**
-
