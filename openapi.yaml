@@ -1,0 +1,33 @@
+openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+paths:
+  /users/:id:
+    get:
+      summary: Une route qui permet de changer les détails d’un utilisateur
+      tags:
+        - Users
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                required:
+                  - id
+                  - name
+                additionalProperties: false
+                $schema: http://json-schema.org/draft-07/schema#
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string

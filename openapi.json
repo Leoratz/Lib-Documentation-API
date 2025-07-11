@@ -7,8 +7,10 @@
   "paths": {
     "/users/:id": {
       "get": {
-        "summary": "Change user details",
-        "tags": ["Users"],
+        "summary": "Une route qui permet de changer les détails d’un utilisateur",
+        "tags": [
+          "Users"
+        ],
         "responses": {
           "200": {
             "description": "",
@@ -24,7 +26,10 @@
                       "type": "string"
                     }
                   },
-                  "required": ["id", "name"],
+                  "required": [
+                    "id",
+                    "name"
+                  ],
                   "additionalProperties": false,
                   "$schema": "http://json-schema.org/draft-07/schema#"
                 }

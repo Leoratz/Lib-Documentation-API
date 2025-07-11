@@ -11,6 +11,7 @@ defineRoute({
 })
 
 generateOpenAPIFile()
+generateOpenAPIFile('openapi.yaml')
 
 // eslint-disable-next-line no-console
 console.log('OpenAPI spec generated in openapi.json')
