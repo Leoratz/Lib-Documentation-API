@@ -2,10 +2,7 @@ import { ZodType, ZodObject } from 'zod'
 import { oas30 } from 'openapi3-ts'
 import { zodToJsonSchema } from 'zod-to-json-schema'
 
-function zodToParameters(
-  schema: ZodType,
-  location: 'path' | 'query'
-): oas30.ParameterObject[] {
+function zodToParameters(schema: ZodType, location: 'path' | 'query'): oas30.ParameterObject[] {
   if (!(schema instanceof ZodObject)) {
     throw new Error('zodToParameters only accepts ZodObject')
   }

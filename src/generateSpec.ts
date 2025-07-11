@@ -1,6 +1,6 @@
 import { routeRegistry } from './registry.js'
 import { oas30 } from 'openapi3-ts'
-import { zodToJsonSchema } from 'zod-to-json-schema' 
+import { zodToJsonSchema } from 'zod-to-json-schema'
 import { zodToParameters } from './zodToParameters.js'
 
 export function generateSpec(): oas30.OpenAPIObject {
@@ -20,15 +20,15 @@ export function generateSpec(): oas30.OpenAPIObject {
     }
 
     const requestBody: oas30.RequestBodyObject | undefined =
-    request?.body !== undefined
-    ? {
-        content: {
-          'application/json': {
-            schema: zodToJsonSchema(request.body) as oas30.SchemaObject,
-          },
-        },
-      }
-    : undefined
+      request?.body !== undefined
+        ? {
+            content: {
+              'application/json': {
+                schema: zodToJsonSchema(request.body) as oas30.SchemaObject,
+              },
+            },
+          }
+        : undefined
 
     const responses: Record<string, oas30.ResponseObject> = {}
 
@@ -36,9 +36,9 @@ export function generateSpec(): oas30.OpenAPIObject {
       responses[status] = {
         description: '',
         content: {
-            'application/json': {
+          'application/json': {
             schema: zodToJsonSchema(schema) as unknown as oas30.SchemaObject,
-        },
+          },
         },
       }
     }
@@ -50,7 +50,7 @@ export function generateSpec(): oas30.OpenAPIObject {
     paths[path][method] = {
       summary,
       responses,
-        requestBody,
+      requestBody,
       parameters,
     }
   }
@@ -64,5 +64,3 @@ export function generateSpec(): oas30.OpenAPIObject {
     paths,
   }
 }
-
-

@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts",
     "format:check": "prettier --check .",
-    "test": "vitest run", 
+    "test": "vitest run",
     "example": "tsx examples/example.ts"
   },
   "devDependencies": {
@@ -36,6 +36,6 @@
     "zod-to-json-schema": "^3.24.6"
   },
   "bin": {
-    "generate-openapi": "./bin/generate-openapi.js"
+    "generate-openapi": "./dist/bin/generate-openapi.js"
   }
 }
