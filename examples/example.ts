@@ -10,8 +10,8 @@ defineRoute({
   response: { 200: z.object({ id: z.string(), name: z.string() }) },
 })
 
-generateOpenAPIFile()
-generateOpenAPIFile('openapi.yaml')
+await generateOpenAPIFile()
+await generateOpenAPIFile('openapi.yaml')
 
 // eslint-disable-next-line no-console
 console.log('OpenAPI spec generated in openapi.json')

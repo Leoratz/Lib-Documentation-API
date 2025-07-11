@@ -17,7 +17,7 @@ describe('OpenAPI file generation', () => {
     if (fs.existsSync(TEST_FILE)) fs.unlinkSync(TEST_FILE)
   })
 
-  it('creates a file with the OpenAPI spec', () => {
+  it('creates a file with the OpenAPI spec', async () => {
     defineRoute({
       method: 'get',
       path: '/users/:id',
@@ -26,7 +26,7 @@ describe('OpenAPI file generation', () => {
       response: { 200: z.object({ id: z.string(), name: z.string() }) },
     })
 
-    generateOpenAPIFile(TEST_FILE)
+    await generateOpenAPIFile(TEST_FILE)
     expect(fs.existsSync(TEST_FILE)).toBe(true)
 
     const content = fs.readFileSync(TEST_FILE, 'utf-8')
@@ -35,24 +35,24 @@ describe('OpenAPI file generation', () => {
     expect(json.paths['/users/:id']).toBeDefined()
   })
 
-  it('defaults to openapi.json if no path is given', () => {
+  it('defaults to openapi.json if no path is given', async () => {
     const defaultFile = 'openapi.json'
     if (fs.existsSync(defaultFile)) fs.unlinkSync(defaultFile)
 
-    generateOpenAPIFile()
+    await generateOpenAPIFile()
     expect(fs.existsSync(defaultFile)).toBe(true)
 
     fs.unlinkSync(defaultFile)
   })
 
-  it('writes an OpenAPI file with empty paths if no routes are registered', () => {
-    generateOpenAPIFile(TEST_FILE)
+  it('writes an OpenAPI file with empty paths if no routes are registered', async () => {
+    await generateOpenAPIFile(TEST_FILE)
     const content = fs.readFileSync(TEST_FILE, 'utf-8')
     const json = JSON.parse(content)
     expect(json.paths).toEqual({})
   })
 
-  it('overwrites an existing file', () => {
+  it('overwrites an existing file', async () => {
     fs.writeFileSync(TEST_FILE, 'old content')
     defineRoute({
       method: 'get',
@@ -60,14 +60,14 @@ describe('OpenAPI file generation', () => {
       summary: 'Overwrite test',
       response: { 200: z.object({ ok: z.boolean() }) },
     })
-    generateOpenAPIFile(TEST_FILE)
+    await generateOpenAPIFile(TEST_FILE)
     const content = fs.readFileSync(TEST_FILE, 'utf-8')
     expect(content).not.toContain('old content')
     const json = JSON.parse(content)
     expect(json.paths['/overwrite']).toBeDefined()
   })
 
-  it('throws or logs an error if the file path is invalid', () => {
-    expect(() => generateOpenAPIFile('/invalid/path/openapi.json')).toThrow()
+  it('throws or logs an error if the file path is invalid', async () => {
+    await expect(generateOpenAPIFile('/invalid/path/openapi.json')).rejects.toThrow()
   })
 })
