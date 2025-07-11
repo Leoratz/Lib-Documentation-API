@@ -8,6 +8,24 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leoratz/lib-documentation-api"
+  },
+  "keywords": [
+    "openapi",
+    "api-documentation",
+    "zod",
+    "typescript",
+    "express",
+    "fastify",
+    "swagger"
+  ],
+  "author": "Leoratz",
+  "license": "MIT",
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",
