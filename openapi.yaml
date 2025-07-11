@@ -5,7 +5,7 @@ info:
 paths:
   /users/:id:
     get:
-      summary: Une route qui permet de changer les détails d’un utilisateur
+      summary: Change user details
       tags:
         - Users
       responses:
