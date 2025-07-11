@@ -1,9 +1,14 @@
-# @leoratz/lib-documentation-api
+# Librairie - Documentation API
 
 [![npm version](https://badge.fury.io/js/@leoratz%2Flib-documentation-api.svg)](https://badge.fury.io/js/@leoratz%2Flib-documentation-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A TypeScript library that automatically analyzes Express or Fastify APIs and generates OpenAPI 3.0 specifications. Define your routes with Zod schemas and get comprehensive API documentation with zero boilerplate.
+
+## Collaborators
+* [Léora CHRIQUI](https://github.com/Leoratz)
+* [Aurore DIMECH](https://github.com/Aurore-Dimech)
+* [Brunic FEYOU](https://github.com/BrunicFeyou)
 
 ## Features
 
@@ -133,7 +138,7 @@ Generates and saves the OpenAPI specification to a JSON file.
 |-----------|------|---------|-------------|
 | `filePath` | `string` | `'openapi.json'` | Output file path |
 
-## 🎯 Advanced Usage
+## Advanced Usage
 
 ### Complex Route Examples
 
@@ -325,11 +330,11 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 | `npm run typecheck` | Type checking |
 | `npm run example` | Run example usage |
 
-## 📄 License
+## License
 
 MIT © [Leoratz](https://github.com/leoratz)
 
-## 🔗 Links
+## Links
 
 - [NPM Package](https://www.npmjs.com/package/@leoratz/lib-documentation-api)
 - [GitHub Repository](https://github.com/leoratz/lib-documentation-api)
