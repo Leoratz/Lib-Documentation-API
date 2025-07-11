@@ -1,6 +1,6 @@
 # Librairie - Documentation API
 
-[![npm version](https://badge.fury.io/js/@leoratz%2Flib-documentation-api.svg)](https://badge.fury.io/js/@leoratz%2Flib-documentation-api)
+[![npm version](https://badge.fury.io/js/rest-to-openapi.svg)](https://www.npmjs.com/package/@leorachr/lib-documentation-api)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A TypeScript library that automatically analyzes Express or Fastify APIs and generates OpenAPI 3.0 specifications. Define your routes with Zod schemas and get comprehensive API documentation with zero boilerplate.
@@ -32,7 +32,7 @@ npm i rest-to-openapi
 ### 1. Define your routes
 
 ```typescript
-import { defineRoute } from '@leoratz/lib-documentation-api'
+import { defineRoute } from 'rest-to-openapi'
 import { z } from 'zod'
 
 // Define a route with request/response schemas
@@ -144,7 +144,7 @@ Generates and saves the OpenAPI specification to a JSON file.
 ### Complex Route Examples
 
 ```typescript
-import { defineRoute } from '@leoratz/lib-documentation-api'
+import { defineRoute } from 'rest-to-openapi'
 import { z } from 'zod'
 
 // Route with query parameters
@@ -213,7 +213,7 @@ defineRoute({
 
 ```typescript
 import express from 'express'
-import { defineRoute, generateOpenAPIFile } from '@leoratz/lib-documentation-api'
+import { defineRoute, generateOpenAPIFile } from 'rest-to-openapi'
 import { z } from 'zod'
 
 const app = express()
@@ -313,7 +313,7 @@ MIT © [Leoratz](https://github.com/leoratz)
 
 ## Links
 
-- [NPM Package](https://www.npmjs.com/package/@leoratz/lib-documentation-api)
+- [NPM Package](https://www.npmjs.com/package/@leorachr/lib-documentation-api)
 - [GitHub Repository](https://github.com/leoratz/lib-documentation-api)
 - [OpenAPI Specification](https://spec.openapis.org/oas/v3.0.3/)
 - [Zod Documentation](https://zod.dev/)
