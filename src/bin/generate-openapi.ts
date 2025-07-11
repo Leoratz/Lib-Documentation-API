@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { generateOpenAPIFile } from '../dist/generateOpenAPIFile.js'
+import { generateOpenAPIFile } from '../generateOpenAPIFile.js'
 
 const filePath = process.argv[2] || 'openapi.json'
 generateOpenAPIFile(filePath)
