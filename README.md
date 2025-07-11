@@ -303,9 +303,16 @@ Add to your `package.json`:
 
 ## Requirements
 
+### Runtime Dependencies
 - Node.js >= 16
-- TypeScript >= 4.5 (for development)
 - Zod >= 3.0
+
+### Development Dependencies (for contributors)
+- TypeScript >= 5.8
+- Vitest >= 3.2 (for testing)
+- ESLint >= 9.30 (for linting)
+- Prettier >= 3.6 (for code formatting)
+- tsx >= 4.20 (for running TypeScript files)
 
 ## Contributing
 
