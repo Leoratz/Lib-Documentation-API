@@ -4,7 +4,8 @@ import { z } from 'zod'
 defineRoute({
   method: 'get',
   path: '/users/:id',
-  summary: 'Get user by ID',
+  tags: ['Users'],
+  summary: 'Une route qui permet de changer les détails d’un utilisateur',
   request: { params: z.object({ id: z.string() }) },
   response: { 200: z.object({ id: z.string(), name: z.string() }) },
 })
