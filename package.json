@@ -1,6 +1,6 @@
 {
-  "name": "@leoratz/lib-documentation-api",
-  "version": "1.0.0",
+  "name": "@leorachr/lib-documentation-api",
+  "version": "1.0.1",
   "description": "Analyse an Express or Fastify API and generate an OpenAPI spec automatically.",
   "type": "module",
   "main": "dist/index.js",
