@@ -5,7 +5,7 @@
 
 A TypeScript library that automatically analyzes Express or Fastify APIs and generates OpenAPI 3.0 specifications. Define your routes with Zod schemas and get comprehensive API documentation with zero boilerplate.
 
-## Collaborators
+## Contributors
 * [Léora CHRIQUI](https://github.com/Leoratz)
 * [Aurore DIMECH](https://github.com/Aurore-Dimech)
 * [Brunic FEYOU](https://github.com/BrunicFeyou)
@@ -204,41 +204,6 @@ defineRoute({
 })
 ```
 
-<!-- ### Programmatic Usage
-
-```typescript
-import { generateSpec } from '@leoratz/lib-documentation-api'
-
-// Get the spec object for custom processing
-const spec = generateSpec()
-
-// Customize the spec
-spec.info = {
-  title: 'My Amazing API',
-  version: '2.1.0',
-  description: 'A comprehensive REST API for user management',
-  contact: {
-    name: 'API Support',
-    email: 'support@myapi.com'
-  }
-}
-
-// Add servers
-spec.servers = [
-  {
-    url: 'https://api.myservice.com/v1',
-    description: 'Production server'
-  },
-  {
-    url: 'https://staging-api.myservice.com/v1', 
-    description: 'Staging server'
-  }
-]
-
-// Save the customized spec
-
-``` -->
-
 ## Integration Examples
 
 ### Express.js Integration
@@ -272,7 +237,7 @@ app.get('/users/:id', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
-  console.log('API documentation generated!')
+  console.log('Routes defined! Run "npx generate-openapi" to generate documentation.')
 })
 ```
 
