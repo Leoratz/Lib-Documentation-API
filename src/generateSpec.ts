@@ -7,7 +7,7 @@ export function generateSpec(): oas30.OpenAPIObject {
   const paths: oas30.PathsObject = {}
 
   for (const route of routeRegistry) {
-    const { method, path, summary, request, response } = route
+    const { method, path, summary, tags, request, response } = route
 
     const parameters: oas30.ParameterObject[] = []
 
@@ -48,10 +48,11 @@ export function generateSpec(): oas30.OpenAPIObject {
     }
 
     paths[path][method] = {
-      summary,
-      responses,
+        summary,
+        tags,
+        responses,
         requestBody,
-      parameters,
+        parameters,
     }
   }
 
